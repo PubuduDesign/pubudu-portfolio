@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
+  CheckCircle,
   Play,
   Image as ImageIcon,
   Palette,
@@ -15,37 +16,67 @@ const services = [
     icon: Play,
     title: "YouTube Thumbnail Design",
     description:
-      "High-converting thumbnails designed to grab attention, increase clicks, and help creators grow their channels.",
+      "Eye catching, high converting thumbnails designed to increase clicks, boost engagement, and grow your channel.",
+    features: [
+      "High CTR Design",
+      "Fast Delivery",
+      "Unlimited Revisions",
+    ],
   },
   {
     icon: ImageIcon,
     title: "Social Media Design",
     description:
-      "Creative posts, stories, banners, and promotional graphics for Facebook, Instagram, LinkedIn, and more.",
+      "Creative social media graphics that strengthen your brand and engage your audience across every platform.",
+    features: [
+      "Custom Designs",
+      "Platform Optimized",
+      "Brand Consistency",
+    ],
   },
   {
     icon: Palette,
     title: "Brand Identity Design",
     description:
-      "Professional branding including logos, color palettes, typography, and brand style guides.",
+      "Professional branding that builds trust with unique logos, colors, typography, and brand guidelines.",
+    features: [
+      "Unique Logo Design",
+      "Brand Guidelines",
+      "Professional Identity",
+    ],
   },
   {
     icon: Printer,
     title: "Print Design",
     description:
-      "Business cards, flyers, brochures, posters, menus, and other high-quality print materials.",
+      "High-quality print materials designed to leave a lasting impression for your business and customers.",
+    features: [
+      "Print Ready Files",
+      "High Resolution",
+      "Professional Layout",
+    ],
   },
   {
     icon: Clapperboard,
     title: "Video Editing",
     description:
-      "Professional editing for YouTube videos, reels, shorts, and promotional content using Adobe Premiere Pro.",
+      "Professional editing for YouTube videos, reels, shorts, and promotional content with smooth storytelling.",
+    features: [
+      "Smooth Editing",
+      "Color Correction",
+      "On-Time Delivery",
+    ],
   },
   {
     icon: MonitorSmartphone,
     title: "UI/UX Design",
     description:
-      "Modern website and mobile interface designs created in Figma with a strong focus on user experience.",
+      "Modern website and mobile interface designs focused on usability, performance, and user experience.",
+    features: [
+      "Responsive Design",
+      "Modern Interface",
+      "User Friendly",
+    ],
   },
 ];
 
@@ -80,7 +111,7 @@ export default function Services() {
           </p>
         </motion.div>
 
-        {/* Cards */}
+        {/* Service Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           {services.map((service, index) => {
@@ -116,10 +147,24 @@ export default function Services() {
                   {service.description}
                 </p>
 
-                {/* Learn More */}
-                <button className="mt-8 text-purple-400 font-semibold hover:text-white transition">
-                  Learn More →
-                </button>
+                {/* Features */}
+                <div className="mt-8 space-y-3">
+                  {service.features.map((feature) => (
+                    <div
+                      key={feature}
+                      className="flex items-center gap-3"
+                    >
+                      <CheckCircle
+                        size={18}
+                        className="text-purple-400 flex-shrink-0"
+                      />
+                      <span className="text-gray-300">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
               </motion.div>
             );
           })}
