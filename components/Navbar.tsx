@@ -1,6 +1,5 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -13,7 +12,32 @@ const links = [
 ];
 
 export default function Navbar() {
+  const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+  const sections = document.querySelectorAll("section[id]");
+
+  const onScroll = () => {
+    const scrollY = window.scrollY + 120;
+
+    sections.forEach((section) => {
+      const element = section as HTMLElement;
+
+      if (
+        scrollY >= element.offsetTop &&
+        scrollY < element.offsetTop + element.offsetHeight
+      ) {
+        setActiveSection(element.id);
+      }
+    });
+  };
+
+  window.addEventListener("scroll", onScroll);
+
+  onScroll();
+
+  return () => window.removeEventListener("scroll", onScroll);
+}, []);
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-[#1B1830]/70 backdrop-blur-md border-b border-purple-500/20">

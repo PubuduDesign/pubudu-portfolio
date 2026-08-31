@@ -40,7 +40,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="bg-[#1B1830] py-28 px-6"
+      className="bg-[#1B1830] py-20 md:py-28 px-5 md:px-6"
     >
       <div className="max-w-6xl mx-auto">
 
@@ -56,7 +56,7 @@ export default function Skills() {
             My Skills
           </p>
 
-          <h2 className="text-5xl font-bold text-white mt-3">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3">
             Creative Software
           </h2>
 
@@ -72,10 +72,10 @@ export default function Skills() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-[#241D3F] rounded-[35px] border border-purple-500/20 p-10 shadow-xl hover:border-purple-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)] transition-all duration-500"
+          className="bg-[#241D3F] rounded-[35px] border border-purple-500/20 p-5 md:p-10 shadow-xl hover:border-purple-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.35)] transition-all duration-500"
         >
 
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-12">
 
             {skills.map((skill, index) => (
 
@@ -91,7 +91,7 @@ export default function Skills() {
               >
 
                 {/* Top Row */}
-                <div className="flex justify-between items-center mb-3">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-3">
 
                   <div className="flex items-center gap-3">
 
@@ -100,15 +100,16 @@ export default function Skills() {
                       alt={skill.name}
                       width={36}
                       height={36}
+                      className="w-8 h-8 md:w-9 md:h-9"
                     />
 
-                    <span className="text-white font-medium">
+                    <span className="text-white font-medium text-sm md:text-base">
                       {skill.name}
                     </span>
 
                   </div>
 
-                  <span className="text-purple-400 font-semibold">
+                  <span className="text-purple-400 font-semibold text-sm md:text-base">
                     {skill.level}
                   </span>
 

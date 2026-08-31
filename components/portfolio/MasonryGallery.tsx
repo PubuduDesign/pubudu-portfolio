@@ -13,7 +13,7 @@ export default function MasonryGallery({
   onOpen,
 }: Props) {
   return (
-    <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5 space-y-5">
+    <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 md:gap-5 space-y-4 md:space-y-5">
 
       {images.map((image, index) => (
 

@@ -1,11 +1,57 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [sending, setSending] = useState(false);
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+    
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  setSending(true);
+  setStatus("");
+
+  const response = await fetch("https://formspree.io/f/xwlkvdqw", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (response.ok) {
+    setStatus("success");
+
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+  } else {
+    setStatus("error");
+  }
+
+  setSending(false);
+};
+
   return (
-    <section id="contact" className="bg-[#1B1830] py-32 px-6">
+    <section id="contact" className="bg-[#1B1830] py-20 md:py-32 px-5 md:px-6">
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
@@ -14,13 +60,13 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
           <p className="uppercase tracking-[8px] text-purple-400 text-sm">
             Contact Me
           </p>
 
-          <h2 className="text-5xl font-bold text-white mt-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-4">
             Let's Talk
           </h2>
 
@@ -31,7 +77,7 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-14">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
 
           {/* Left Side */}
           <motion.div
@@ -40,14 +86,14 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h3 className="text-white text-3xl font-bold mb-8">
+            <h3 className="text-white text-2xl md:text-3xl font-bold mb-8">
               Get In Touch
             </h3>
 
             <div className="space-y-8">
 
-              <div className="flex gap-5 items-center">
-                <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center">
+              <div className="flex items-center gap-4 md:gap-5">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-purple-500/20 flex items-center justify-center">
                   <Mail className="text-purple-400" />
                 </div>
 
@@ -59,8 +105,8 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex gap-5 items-center">
-                <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center">
+              <div className="flex items-center gap-4 md:gap-5">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-purple-500/20 flex items-center justify-center">
                   <Phone className="text-purple-400" />
                 </div>
 
@@ -72,8 +118,8 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex gap-5 items-center">
-                <div className="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center">
+              <div className="flex items-center gap-4 md:gap-5">
+                <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-purple-500/20 flex items-center justify-center">
                   <MapPin className="text-purple-400" />
                 </div>
 
@@ -90,43 +136,79 @@ export default function Contact() {
 
           {/* Contact Form */}
           <motion.form
+          onSubmit={handleSubmit}
+          action="https://formspree.io/f/xwlkvdqw"
+          method="POST"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="bg-[#241D3F] rounded-3xl p-8 border border-purple-500/20 shadow-xl"
+            className="bg-[#241D3F] rounded-3xl p-5 md:p-8 border border-purple-500/20 shadow-xl"
           >
 
             <input
               type="text"
               placeholder="Your Name"
-              className="w-full mb-5 bg-[#1B1830] rounded-xl p-4 text-white outline-none border border-transparent focus:border-purple-500 transition"
+              value={formData.name}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
+              required
+              className="w-full mb-5 bg-[#1B1830] rounded-xl p-3 md:p-4 text-white outline-none border border-transparent focus:border-purple-500 transition"
             />
 
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
-              className="w-full mb-5 bg-[#1B1830] rounded-xl p-4 text-white outline-none border border-transparent focus:border-purple-500 transition"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
+              required
+              className="w-full mb-5 bg-[#1B1830] rounded-xl p-3 md:p-4 text-white outline-none border border-transparent focus:border-purple-500 transition"
             />
 
             <input
               type="text"
+              name="subject"
               placeholder="Subject"
-              className="w-full mb-5 bg-[#1B1830] rounded-xl p-4 text-white outline-none border border-transparent focus:border-purple-500 transition"
+              value={formData.subject}
+              onChange={(e) =>
+                setFormData({ ...formData, subject: e.target.value })
+              }
+              className="w-full mb-5 bg-[#1B1830] rounded-xl p-3 md:p-4 text-white outline-none border border-transparent focus:border-purple-500 transition"
             />
 
             <textarea
               rows={6}
+              name="message"
               placeholder="Tell me about your project..."
-              className="w-full mb-6 bg-[#1B1830] rounded-xl p-4 text-white outline-none border border-transparent focus:border-purple-500 transition resize-none"
+              value={formData.message}
+              onChange={(e) =>
+                setFormData({ ...formData, message: e.target.value })
+              }
+              className="w-full mb-6 bg-[#1B1830] rounded-xl p-3 md:p-4 text-white outline-none border border-transparent focus:border-purple-500 transition resize-none"
             />
 
             <button
               type="submit"
-              className="w-full py-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold transition duration-300 hover:scale-[1.02]"
+              disabled={sending}
+              className="w-full py-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold transition duration-300 disabled:opacity-60"
             >
-              Let's Talk
+              {sending ? "Sending..." : "Let's Talk"}
             </button>
+            {status === "success" && (
+              <p className="text-green-400 text-center mt-4">
+                ✅ Message sent successfully!
+                </p>
+              )}
+              
+              {status === "error" && (
+                <p className="text-red-400 text-center mt-4">
+                  ❌ Something went wrong. Please try again.
+                  </p>
+                )}
 
             <p className="text-center text-gray-400 text-sm mt-4">
               I usually reply within 24 hours.

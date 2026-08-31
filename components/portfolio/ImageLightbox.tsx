@@ -32,19 +32,19 @@ export default function ImageLightbox({
 
       <button
         onClick={onPrev}
-        className="absolute left-6 text-white"
+        className="absolute left-2 sm:left-6 text-white"
       >
-        <ChevronLeft size={40} />
+        <ChevronLeft size={26} />
       </button>
 
       <button
         onClick={onNext}
-        className="absolute right-6 text-white"
+        className="absolute right-2 sm:right-6 text-white"
       >
-        <ChevronRight size={40} />
+        <ChevronRight size={26} />
       </button>
 
-      <div className="relative w-[90vw] h-[90vh]">
+      <div className="relative w-[95vw] h-[70vh] sm:h-[80vh] lg:w-[90vw] lg:h-[85vh]">
         <Image
           src={images[current]}
           alt=""

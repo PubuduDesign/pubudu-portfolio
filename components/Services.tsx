@@ -84,7 +84,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="bg-[#1B1830] py-32 px-6"
+      className="bg-[#1B1830] py-20 md:py-32 px-5 md:px-6"
     >
       <div className="max-w-7xl mx-auto">
 
@@ -100,11 +100,11 @@ export default function Services() {
             My Services
           </p>
 
-          <h2 className="text-5xl md:text-6xl font-bold text-white mt-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-4">
             What I Create
           </h2>
 
-          <p className="text-gray-400 mt-6 max-w-3xl mx-auto leading-8">
+          <p className="text-gray-400 text-base md:text-lg mt-6 max-w-3xl mx-auto leading-8">
             I help businesses, brands, and content creators stand out with
             creative visuals that capture attention, build trust, and leave a
             lasting impression.
@@ -112,7 +112,7 @@ export default function Services() {
         </motion.div>
 
         {/* Service Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -127,18 +127,18 @@ export default function Services() {
                   duration: 0.6,
                   delay: index * 0.15,
                 }}
-                className="group bg-[#241D3F] border border-purple-500/20 rounded-3xl p-8 hover:border-purple-500 hover:-translate-y-3 hover:shadow-[0_20px_60px_rgba(168,85,247,0.30)] transition-all duration-500"
+                className="group bg-[#241D3F] border border-purple-500/20 rounded-3xl p-6 md:p-8 hover:border-purple-500 hover:-translate-y-3 hover:shadow-[0_20px_60px_rgba(168,85,247,0.30)] transition-all duration-500"
               >
                 {/* Icon */}
-                <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:bg-purple-500 group-hover:scale-110 transition-all duration-500">
+                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center group-hover:bg-purple-500 group-hover:scale-110 transition-all duration-500">
                   <Icon
-                    size={32}
+                    size={28}
                     className="text-purple-400 group-hover:text-white transition"
                   />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-white text-2xl font-semibold mt-8">
+                <h3 className="text-white text-xl md:text-2xl font-semibold mt-6 md:mt-8">
                   {service.title}
                 </h3>
 
@@ -158,7 +158,7 @@ export default function Services() {
                         size={18}
                         className="text-purple-400 flex-shrink-0"
                       />
-                      <span className="text-gray-300">
+                      <span className="text-gray-300 text-sm md:text-base">
                         {feature}
                       </span>
                     </div>

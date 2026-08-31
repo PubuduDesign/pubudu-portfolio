@@ -28,7 +28,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="bg-[#1B1830] py-32 px-6"
+      className="bg-[#1B1830] py-20 md:py-32 px-5 md:px-6"
     >
       <div className="max-w-7xl mx-auto">
 
@@ -38,13 +38,13 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
           <p className="uppercase tracking-[8px] text-purple-400 text-sm">
             Testimonials
           </p>
 
-          <h2 className="text-5xl font-bold text-white mt-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-4">
             What Clients Say
           </h2>
 
@@ -54,7 +54,7 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
           {testimonials.map((item, index) => (
 
@@ -67,7 +67,7 @@ export default function Testimonials() {
                 duration: 0.6,
                 delay: index * 0.2,
               }}
-              className="bg-[#241D3F] border border-purple-500/20 rounded-3xl p-8 hover:border-purple-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(168,85,247,0.25)] transition-all duration-500"
+              className="bg-[#241D3F] border border-purple-500/20 rounded-3xl p-6 md:p-8 hover:border-purple-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(168,85,247,0.25)] transition-all duration-500"
             >
 
               {/* Stars */}
@@ -82,18 +82,18 @@ export default function Testimonials() {
               </div>
 
               {/* Review */}
-              <p className="text-gray-300 leading-8 italic">
+              <p className="text-gray-300 text-sm md:text-base leading-7 md:leading-8 italic">
                 "{item.review}"
               </p>
 
               {/* Client */}
               <div className="mt-8 border-t border-purple-500/20 pt-5">
 
-                <h3 className="text-white text-xl font-semibold">
+                <h3 className="text-white text-lg md:text-xl font-semibold">
                   {item.name}
                 </h3>
 
-                <p className="text-purple-400 mt-1">
+                <p className="text-purple-400 text-sm md:text-base mt-1">
                   {item.role}
                 </p>
 

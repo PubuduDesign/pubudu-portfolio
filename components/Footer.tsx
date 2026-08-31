@@ -10,13 +10,13 @@ import {
 export default function Footer() {
   return (
     <footer className="bg-[#151225] border-t border-purple-500/20">
-      <div className="max-w-7xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-5 md:px-6 py-12 md:py-16">
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
 
           {/* Logo & Description */}
-          <div>
-            <h2 className="text-4xl font-bold text-white">
+          <div className="text-center lg:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
               Pubudu<span className="text-purple-500">.</span>
             </h2>
 
@@ -27,7 +27,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center lg:text-left">
             <h3 className="text-white text-xl font-semibold mb-5">
               Quick Links
             </h3>
@@ -78,18 +78,18 @@ export default function Footer() {
           </div>
 
           {/* Social Media */}
-          <div>
+          <div className="text-center lg:text-left">
             <h3 className="text-white text-xl font-semibold mb-5">
               Follow Me
             </h3>
 
-            <div className="flex gap-4">
+            <div className="flex justify-center lg:justify-start gap-4">
 
               <a
                 href="https://facebook.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
+                className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
               >
                 <FaFacebookF size={20} />
               </a>
@@ -98,7 +98,7 @@ export default function Footer() {
                 href="https://instagram.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
+                className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
               >
                 <FaInstagram size={20} />
               </a>
@@ -107,7 +107,7 @@ export default function Footer() {
                 href="https://linkedin.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
+                className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
               >
                 <FaLinkedinIn size={20} />
               </a>
@@ -116,7 +116,7 @@ export default function Footer() {
                 href="https://youtube.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
+                className="w-11 h-11 md:w-12 md:h-12 rounded-xl bg-[#241D3F] flex items-center justify-center text-white hover:bg-purple-600 hover:scale-110 transition"
               >
                 <FaYoutube size={20} />
               </a>
@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-purple-500/20 mt-14 pt-8 text-center">
+        <div className="border-t border-purple-500/20 mt-10 md:mt-14 pt-6 md:pt-8 text-center">
           <p className="text-gray-500">
             © {new Date().getFullYear()} Pubudu Shyamal. All Rights Reserved.
           </p>

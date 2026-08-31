@@ -55,7 +55,7 @@ export default function CategoryGrid({
 
           <div className="p-6 text-center">
 
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-xl md:text-2xl font-bold text-white">
               {category.title}
             </h3>
 
