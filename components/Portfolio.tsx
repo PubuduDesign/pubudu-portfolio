@@ -3,20 +3,18 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import CategoryGrid from "./portfolio/CategoryGrid";
-import GalleryModal from "./portfolio/GalleryModal";
-
+import MasonryGallery from "./portfolio/MasonryGallery";
+import ImageLightbox from "./portfolio/ImageLightbox";
 import { thumbnailCategories } from "./portfolio/portfolioData";
 
-const tabs = [
-  "Thumbnails",
-  "Social Media",
-  "Banners",
-];
+const tabs = ["Thumbnails", "Social Media", "Banners"];
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("Thumbnails");
 
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
+
+  const [selectedImage, setSelectedImage] = useState(-1);
 
   return (
     <section
@@ -28,10 +26,10 @@ export default function Portfolio() {
         {/* Heading */}
 
         <motion.div
-          initial={{ opacity:0,y:40 }}
-          whileInView={{ opacity:1,y:0 }}
-          viewport={{ once:true }}
-          transition={{ duration:.8 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: .8 }}
           className="text-center"
         >
           <p className="uppercase tracking-[8px] text-purple-400 text-sm">
@@ -43,57 +41,102 @@ export default function Portfolio() {
           </h2>
 
           <p className="text-gray-400 mt-6 max-w-3xl mx-auto">
-            Browse my best design collections. Click any category to
-            explore the complete gallery.
+            Browse my best design collections.
           </p>
+
         </motion.div>
 
         {/* Tabs */}
 
-        <div className="flex justify-center gap-4 flex-wrap mt-14">
+        <div className="flex justify-center gap-4 mt-14 flex-wrap">
 
-          {tabs.map((tab)=>(
+          {tabs.map((tab) => (
+
             <button
               key={tab}
-              onClick={()=>setActiveTab(tab)}
+              onClick={() => {
+                setActiveTab(tab);
+                setSelectedCategory(null);
+              }}
               className={`px-8 py-3 rounded-full transition ${
-                activeTab===tab
-                ? "bg-purple-600 text-white"
-                : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
+                activeTab === tab
+                  ? "bg-purple-600 text-white"
+                  : "border border-purple-500 text-purple-300 hover:bg-purple-600 hover:text-white"
               }`}
             >
               {tab}
             </button>
+
           ))}
 
         </div>
 
-        {/* Categories */}
+        {/* THUMBNAILS */}
 
-        <div className="mt-16">
+        {activeTab === "Thumbnails" && !selectedCategory && (
 
-          {activeTab==="Thumbnails" && (
+          <div className="mt-16">
 
             <CategoryGrid
               categories={thumbnailCategories}
               onOpen={setSelectedCategory}
             />
 
-          )}
+          </div>
 
-        </div>
+        )}
+
+        {/* CATEGORY GALLERY */}
+
+        {selectedCategory && (
+
+          <div className="mt-16">
+
+            <button
+              onClick={() => setSelectedCategory(null)}
+              className="mb-10 px-6 py-3 rounded-full bg-purple-600 hover:bg-purple-500 text-white"
+            >
+              ← Back to Categories
+            </button>
+
+            <h3 className="text-4xl font-bold text-white mb-10">
+              {selectedCategory.title} Collection
+            </h3>
+
+            <MasonryGallery
+              images={selectedCategory.images}
+              onOpen={(index) => setSelectedImage(index)}
+            />
+
+          </div>
+
+        )}
 
       </div>
 
-      {<div>
-      {selectedCategory && (
-  <GalleryModal
-    category={selectedCategory}
-    onClose={() => setSelectedCategory(null)}
+      {/* Lightbox temporarily disabled */}
+
+{selectedCategory && selectedImage >= 0 && (
+  <ImageLightbox
+    images={selectedCategory.images}
+    current={selectedImage}
+    onClose={() => setSelectedImage(-1)}
+    onNext={() =>
+      setSelectedImage((prev) =>
+        prev === selectedCategory.images.length - 1
+          ? 0
+          : prev + 1
+      )
+    }
+    onPrev={() =>
+      setSelectedImage((prev) =>
+        prev === 0
+          ? selectedCategory.images.length - 1
+          : prev - 1
+      )
+    }
   />
 )}
-</div>
-      }
 
     </section>
   );
