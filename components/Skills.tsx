@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const skills = [
   {
     name: "Adobe Photoshop",
-    icon: "/icons/photoshop.png",
+    icon: "/icons/photoshop 1.png",
     percent: 100,
     level: "Expert",
   },

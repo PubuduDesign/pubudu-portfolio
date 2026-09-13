@@ -144,6 +144,16 @@ export const thumbnailCategories = [
       "/portfolio/thumbnails/Technology/4.jpg",
       "/portfolio/thumbnails/Technology/5.jpg",
       "/portfolio/thumbnails/Technology/6.jpg",
+      "/portfolio/thumbnails/Technology/7.jpg",
+      "/portfolio/thumbnails/Technology/8.jpg",
+      "/portfolio/thumbnails/Technology/9.jpg",
+      "/portfolio/thumbnails/Technology/10.jpg",
+      "/portfolio/thumbnails/Technology/11.jpg",
+      "/portfolio/thumbnails/Technology/12.jpg",
+      "/portfolio/thumbnails/Technology/13.jpg",
+      "/portfolio/thumbnails/Technology/14.jpg",
+      "/portfolio/thumbnails/Technology/15.jpg",
+
     ],
   },
 

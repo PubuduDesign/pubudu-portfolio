@@ -67,10 +67,10 @@ export default function Hero() {
 <motion.div
   animate={{ y: [0, -15, 0], rotate: [0, 5, -5, 0] }}
   transition={{ duration: 4, repeat: Infinity }}
-  className="hidden lg:block absolute top-8 left-8 z-30"
+  className="absolute bottom-[450px] left-[2%] z-30"
 >
   <Image
-    src="/icons/photoshop.png"
+    src="/icons/photoshop 1.png"
     alt="Photoshop"
     width={60}
     height={60}
@@ -82,7 +82,7 @@ export default function Hero() {
 <motion.div
   animate={{ y: [0, 12, 0] }}
   transition={{ duration: 4.5, repeat: Infinity }}
-  className="hidden lg:block absolute top-8 left-8 z-30"
+  className="absolute top-[38%] right-[2%] z-30"
 >
   <Image
     src="/icons/canva.png"
@@ -97,7 +97,7 @@ export default function Hero() {
 <motion.div
   animate={{ x: [0, 10, 0] }}
   transition={{ duration: 3.8, repeat: Infinity }}
-  className="hidden lg:block absolute top-8 left-8 z-30"
+  className="absolute top-4 left-[8%] z-30"
 >
   <Image
     src="/icons/illustrator.png"
@@ -112,7 +112,7 @@ export default function Hero() {
 <motion.div
   animate={{ y: [0, -12, 0] }}
   transition={{ duration: 4.2, repeat: Infinity }}
-  className="hidden lg:block absolute bottom-100 right-0 z-30"
+  className="absolute top-[20%] right-[18%] z-30"
 >
   <Image
     src="/icons/figma.png"
@@ -127,7 +127,7 @@ export default function Hero() {
 <motion.div
   animate={{ rotate: [0, 8, -8, 0] }}
   transition={{ duration: 5, repeat: Infinity }}
-  className="hidden lg:block absolute bottom-50 left-0 z-30"
+  className="absolute bottom-[8%] left-[2%] z-30"
 >
   <Image
     src="/icons/premiere.png"
